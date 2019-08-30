@@ -95,20 +95,6 @@ int main(int argc, char * argv[]) {
         }
     }
 
-    // reference
-    for (uint64_t size = mat_size_large; size >= mat_size_small; size /= 2) { // and for different vector sizes
-    	for (uint64_t i = 0; i < size; i += 1) D[i] = 0.0;
-        fprintf(stderr, "starting reference code with size: %ld\n", size);
-        ArchLabTimer timer;
-        timer.attr("matrix_size", size).
-            attr("iterations", iterations).
-            attr("reference", 1).
-            go(); // Start measuring
-        for (uint32_t k = 0; k < iterations; k++) {
-            reference(D, A, B, size); // Call submitted code
-        }
-    }
-
 
     archlab_write_stats();
 
