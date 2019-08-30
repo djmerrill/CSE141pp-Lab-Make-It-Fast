@@ -1,0 +1,5 @@
+ # You can set options here
+compiler=gcc-9
+MHz=1900
+optimize=-O3
+
