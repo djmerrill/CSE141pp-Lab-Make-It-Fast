@@ -74,7 +74,7 @@ int main(int argc, char * argv[]) {
         }
     }
     {
-	uint64_t size = mat_size_large/3*2;
+	uint64_t size = mat_size_large/4*5;
 	fprintf(stderr, "size=%ld\n", size);
         reference(C, A, B, size);
         sqmm(D, A, B, size);
