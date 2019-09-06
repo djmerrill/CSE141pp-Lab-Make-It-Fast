@@ -10,7 +10,7 @@ clean_cmd = ['make', 'clean']
 env = ['CC','CXX','CFLAGS','CXXFLAGS']
 repo = "https://github.com/djmerrill/CSE141pp-Lab-Make-It-Fast"
 reference_tag = "314bfbd09ab3a28b446742234851eeef2c29dcba"
-time_limit = 270 
+time_limit = 450 
 
 valid_options={
     "compiler":
