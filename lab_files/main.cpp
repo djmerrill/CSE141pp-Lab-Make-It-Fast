@@ -73,6 +73,23 @@ int main(int argc, char * argv[]) {
             }
         }
     }
+    {
+	uint64_t size = mat_size_large/3*2;
+	fprintf(stderr, "size=%ld\n", size);
+        reference(C, A, B, size);
+        sqmm(D, A, B, size);
+        for (uint64_t i = 0; i < mat_size_large * mat_size_large; i += 1) {
+            if (abs(C[i] - D[i]) > 1e-6) {
+                if (i >= size) {
+                    fprintf(stderr, "Bad result from sqmm. C[%ld]=%f D[%ld]=%f. Outside bounds (size=%ld)\n", i, C[i], i, D[i], size);
+		    return 0;
+                } else {
+                    fprintf(stderr, "Bad result from sqmm. C[%ld]=%f D[%ld]=%f.\n", i, C[i], i, D[i]);
+                    return 0;
+                }
+            }
+        }
+    }
     fprintf(stderr, "passed testing\n");
     //pristine_machine(); // clear caches, disable turbo boost, reset clock speed
     if (std::getenv("MHZ") != nullptr) {
